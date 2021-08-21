@@ -1,8 +1,48 @@
 <html>
-<header>
-  <title> GitHub Page Testing</title>
-<header>
+<head>
+   <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+   <script src = "https://code.highcharts.com/highcharts.js"></script>
+   <script src="https://code.highcharts.com/modules/data.js"></script>
+   <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+   <script>
+      function zoomableChart() {
+         Highcharts.chart('container', {
+            chart: {
+               zoomType: 'x'
+            },
+            title: {
+               text: 'My Data'
+            },
+            plotOptions: {
+			  series: {
+				dataLabels: {
+				   enabled: false
+				}
+			}
+            },
+            subtitle: {
+               text: 'Glucose'
+            },
+			tooltip: {
+				xDateFormat: '%d/%m/%Y %H:%M:%S',
+				split: false,
+				enabled: true
+			  },
+            data: {
+               csvURL: './data.csv',
+               
+            }
+         });
+       
+      }
+   </script>
 <body>
-This is a testing for GitHub Page
-</body>
+      <div id = "container" style = "width: 100%; height: 100%; margin: 0 auto"></div>
+      
+      <script language = "JavaScript">
+         $(document).ready(zoomableChart);
+      </script>
+      
+   </body>
 </html>
