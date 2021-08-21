@@ -7,6 +7,10 @@
 
    <script>
       function zoomableChart() {
+		const urlParams = new URLSearchParams(window.location.search);
+		var param = urlParams.get('data');
+		param = param ? param : "";
+		var csvFile = "./data" + param + ".csv";
          Highcharts.chart('container', {
             chart: {
                zoomType: 'x'
@@ -14,7 +18,7 @@
             title: {
                text: 'My Data'
             },
-	    yAxis: [{}, {}, {},{},{},{opposite: true}],
+	        yAxis: [{}, {},{opposite:true},{}],
             plotOptions: {
 			  series: {
 				dataLabels: {
@@ -33,7 +37,7 @@
 		enabled: true
 	  },
             data: {
-               csvURL: './data.csv',
+               csvURL: csvFile,
                
             }
          });
